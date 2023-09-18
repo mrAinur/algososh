@@ -8,7 +8,6 @@ import { ElementStates } from "../../types/element-states";
 import { LinkedList } from "./utils/algorithmList-page";
 import { Circle } from "../ui/circle/circle";
 import { ArrowIcon } from "../ui/icons/arrow-icon";
-import { v4 as uuidv4 } from "uuid";
 import { timeout } from "../../utils/setTimeput";
 import { DELAY_IN_MS } from "../../constants/delays";
 
