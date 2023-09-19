@@ -24,30 +24,19 @@ export class LinkedList<T> implements NodeList<T> {
   public tail: LinkedListNode<T> | null = null;
 
   public prepend(value: string, color: ElementStates): LinkedList<T> {
-    // Создаём новый узел, который будет новым head,
-    // при создании передаем второй аргумент, который указывает
-    // что его "next" будет текущий head,
-    // так как новый узел будет стоять перед текущем head.
-
     const newNode = new LinkedListNode(value, color, this.head);
-
-    // Переназначаем head на новый узел.
     this.head = newNode;
 
-    // Если ещё нет tail, делаем новый узел tail.
     if (!this.tail) {
       this.tail = newNode;
     }
 
-    // Возвращаем весь список.
     return this;
   }
 
   public append(value: string, color: ElementStates): LinkedList<T> {
-    // Создаём новый узел.
     const newNode = new LinkedListNode(value, color);
 
-    // Если нет head или tail, делаем новым узлом head и tail.
     if (!this.head || !this.tail) {
       this.head = newNode;
       this.tail = newNode;
@@ -55,19 +44,14 @@ export class LinkedList<T> implements NodeList<T> {
       return this;
     }
 
-    // Присоединяем новый узел к концу связного списка.
-    // Берём последний узел и указываем, что его next будет новым узлом.
-
     this.tail.next = newNode;
 
-    // Переназначаем tail на новый узел.
     this.tail = newNode;
 
     return this;
   }
 
   public delete(index: number): LinkedListNode<T> | null {
-    // Если нет head значит список пуст.
     if (!this.head) {
       return null;
     }
@@ -101,7 +85,6 @@ export class LinkedList<T> implements NodeList<T> {
     value: string,
     color: ElementStates,
   ): LinkedListNode<T> | null {
-    // Если нет head значит список пуст.
     if (!this.head) {
       return null;
     }
@@ -114,11 +97,10 @@ export class LinkedList<T> implements NodeList<T> {
       curr = curr.next;
 
       if (check === index) {
-        let save = curr;
+        let save = { ...curr };
         curr.value = value;
         curr.state = color;
-        curr.next = save;
-        console.log(`Вот получилось ${curr} and ${save}`);
+        curr.next = { ...save };
       }
       check++;
     }
@@ -127,7 +109,6 @@ export class LinkedList<T> implements NodeList<T> {
   }
 
   public find(index: number): LinkedListNode<T> | null {
-    // Если нет head значит список пуст.
     if (!this.head) {
       return null;
     }
@@ -149,43 +130,26 @@ export class LinkedList<T> implements NodeList<T> {
   }
 
   public deleteTail(): LinkedListNode<T> | null {
-    // Если нет tail, значит список пуст.
-
     if (!this.tail) {
       return null;
     }
 
-    // Сохраняем значение последнего узла.
     const deletedTail = this.tail;
 
-    // Если head и tail равны, значит в списке только один узел.
     if (this.head === this.tail) {
       this.head = null;
       this.tail = null;
       return deletedTail;
     }
 
-    // Если в связном списке много узлов.
-    // Перебираем все узлы и находим предпоследний узел,
-    // убираем ссылку «next» на последний узел.
-
     let currentNode = this.head;
     while (currentNode && currentNode.next) {
-      //
-      // Если у следующего узла нет следующего узла,
-      // значит текущий узел предпоследний.
-
       if (!currentNode.next.next) {
-        // Убираем ссылку «next» на последний узел.
         currentNode.next = null;
       } else {
-        // Перематываем на один узел вперед.
         currentNode = currentNode.next;
       }
     }
-
-    // В данном случае currentNode - это предпоследний узел или head,
-    // который становится последним узлом.
 
     this.tail = currentNode;
 
@@ -193,24 +157,15 @@ export class LinkedList<T> implements NodeList<T> {
   }
 
   public deleteHead(): LinkedListNode<T> | null {
-    // Если нет head значит список пуст.
     if (!this.head) {
       return null;
     }
 
     const deletedHead = this.head;
 
-    //
-    // Если у head есть ссылка на следующий "next" узел
-    // то делаем его новым head.
-
     if (this.head.next) {
       this.head = this.head.next;
     } else {
-      //
-      // Если у head нет ссылки на следующий "next" узел
-      // то мы удаляем последний узел.
-
       this.head = null;
       this.tail = null;
     }
@@ -218,19 +173,16 @@ export class LinkedList<T> implements NodeList<T> {
     return deletedHead;
   }
 
-  // Создаём массив из всех узлов
   public toArray(): LinkedListNode<T>[] {
     const nodes = [];
 
     let currentNode = this.head;
 
-    // Перебираем все узлы и добавляем в массив.
     while (currentNode) {
       nodes.push({ value: currentNode.value, state: currentNode.state });
       currentNode = currentNode.next;
     }
 
-    // Возвращаем массив из всех узлов.
     return nodes as LinkedListNode<T>[];
   }
 }

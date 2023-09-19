@@ -34,7 +34,7 @@ export const FibonacciPage: React.FC = () => {
                 : handleChange(e);
             }}
             type="number"
-            placeholder="Введите число от 0 до 19"
+            placeholder="Введите число от 1 до 19"
           />
           <Button
             type="button"
@@ -45,7 +45,11 @@ export const FibonacciPage: React.FC = () => {
             }}
             isLoader={loader}
             disabled={
-              values.string.length && Number(values.string) < 20 ? false : true
+              values.string.length &&
+              Number(values.string) < 20 &&
+              Number(values.string) !== 0
+                ? false
+                : true
             }
           />
           <p className={style.paragraph}>Максимальное число 19</p>

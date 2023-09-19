@@ -15,10 +15,10 @@ type TCircleStack = {
   value: string;
 };
 
-const stack = new Stack<TCircleStack>();
-
 export const StackPage: React.FC = () => {
   const [state, setState] = useState<TCircleStack[]>([]);
+
+  const [stack, setStack] = useState(new Stack<TCircleStack>());
 
   const { values, handleChange, setValues } = useForm({ string: "" });
 
@@ -29,6 +29,7 @@ export const StackPage: React.FC = () => {
     };
 
     stack.push(newTask);
+    setStack(stack);
     setValues({ string: "" });
     const arr: TCircleStack[] = stack.getContainer();
     setState([...arr]);
@@ -43,11 +44,13 @@ export const StackPage: React.FC = () => {
     setState([...arr]);
     await timeout(SHORT_DELAY_IN_MS);
     stack.pop();
+    setStack(stack);
     setState([...arr]);
   };
 
   const removeStack = () => {
     const arr: TCircleStack[] = stack.clearContainer();
+    setStack(stack);
     setState([...arr]);
   };
 
