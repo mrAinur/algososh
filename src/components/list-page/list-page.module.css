@@ -1,0 +1,124 @@
+.main {
+  margin: 48px auto 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonsBox {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.topButtonsBox {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.inputBox {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  margin: 0;
+  padding: 0;
+  min-width: 204px;
+}
+
+.paragraph {
+  margin: 0 0 0 16px;
+  padding: 0;
+  display: flex;
+  font-family: Segoe UI;
+  color: #3d3d3d;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.bottomButtonsBox {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.topButtons {
+  margin: 0;
+  padding: 0;
+  min-width: 175px;
+  min-height: 60px;
+}
+
+.bottomButtons {
+  margin: 0;
+  padding: 0;
+  min-width: 362px;
+  min-height: 60px;
+}
+.circlesBox {
+  margin: 56px 0 0 0;
+  padding: 0;
+  display: flex;
+}
+
+.cirlces {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cirlce {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.smallCirlceTop {
+  margin: 0 0 0 12px;
+  padding: 0;
+  min-height: 56px;
+}
+
+.smallCirlceBottom {
+  margin: 30px 0 0 12px;
+  padding: 0;
+  min-height: 56px;
+}
+
+.emptyBoxTop {
+  margin: 0;
+  padding: 0;
+  min-height: 56px;
+}
+
+.emptyBoxBottom {
+  margin: 0;
+  padding: 0;
+  min-height: 86px;
+}
+
+.bigCircle {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
