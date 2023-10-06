@@ -69,7 +69,7 @@ export const getСhoiceSorting = async (
         setState([...arr]);
       }
       setLoader({ ascending: false, descending: false });
-      break;
+      return arr;
     case Direction.Descending:
       for (let i = 0; i < arr.length; i++) {
         arr[i].state = ElementStates.Changing;
@@ -97,7 +97,7 @@ export const getСhoiceSorting = async (
         setState([...arr]);
       }
       setLoader({ ascending: false, descending: false });
-      break;
+      return arr;
   }
 };
 
@@ -137,7 +137,7 @@ export const getBubbleSorting = async (
         setState([...arr]);
       }
       setLoader({ ascending: false, descending: false });
-      break;
+      return arr;
 
     case Direction.Descending:
       for (let i = 0; i < arr.length; i++) {
@@ -163,6 +163,6 @@ export const getBubbleSorting = async (
         setState([...arr]);
       }
       setLoader({ ascending: false, descending: false });
-      break;
+      return arr;
   }
 };
