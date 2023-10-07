@@ -82,20 +82,5 @@ describe("Проверка", () => {
         break;
       }
     }
-    // cy.get(`ul>li`).each(item => {
-    //   cy.get(item).contains("E").closest("div").should("have.css", "border", "4px solid rgb(210, 82, 225)");
-    // });
-
-    // .then(res => {
-    //   cy.log(res);
-    // });
-
-    // .contains("T")
-    // .closest("div")
-    // .should("have.css", "border", "4px solid rgb(127, 224, 81)");
-
-    // .then(res => {
-    //   if (res) throw new Error(res.message);
-    // });
   });
 });
