@@ -68,7 +68,6 @@ describe("Проверка", () => {
         .closest("div")
         .should("have.css", "border", "4px solid rgb(210, 82, 225)");
       if (i + 1 >= end - 1) {
-        cy.debug();
         cy.tick(1000);
         cy.get("li")
           .eq(i)
