@@ -25,12 +25,12 @@ describe("Проверка", () => {
     //Проверяем первый и последний элементы в начале алгоритма
     cy.get("li")
       .eq(0)
-      .contains("c")
+      .contains(testingText[0])
       .closest("div")
       .should("have.css", "border", "4px solid rgb(210, 82, 225)");
     cy.get("li")
       .eq(testingText.length - 1)
-      .contains("k")
+      .contains(testingText[testingText.length - 1])
       .closest("div")
       .should("have.css", "border", "4px solid rgb(210, 82, 225)");
 
