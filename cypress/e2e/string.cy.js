@@ -71,12 +71,12 @@ describe("Проверка", () => {
         cy.tick(1000);
         cy.get("li")
           .eq(i)
-          .contains(testingText[end])
+          .contains(testingText[i])
           .closest("div")
           .should("have.css", "border", "4px solid rgb(127, 224, 81)");
         cy.get("li")
           .eq(end)
-          .contains(testingText[i])
+          .contains(testingText[end])
           .closest("div")
           .should("have.css", "border", "4px solid rgb(127, 224, 81)");
         break;
