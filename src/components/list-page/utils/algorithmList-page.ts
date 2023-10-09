@@ -23,6 +23,10 @@ export class LinkedList<T> implements NodeList<T> {
   public head: LinkedListNode<T> | null = null;
   public tail: LinkedListNode<T> | null = null;
 
+  constructor(private container: { value: string; state: ElementStates }[]) {
+    container.forEach(item => this.append(item.value, item.state));
+  }
+
   public prepend(value: string, color: ElementStates): LinkedList<T> {
     const newNode = new LinkedListNode(value, color, this.head);
     this.head = newNode;
