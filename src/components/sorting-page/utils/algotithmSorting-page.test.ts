@@ -11,18 +11,12 @@ describe("Сортировка выбором корректно сортиру�
     expect(
       await getСhoiceSorting(setState, setLoader, arr, Direction.Ascending),
     ).toEqual(arr);
-    // expect(
-    //   await getBubbleSorting(setState, setLoader, arr, Direction.Ascending),
-    // ).toEqual(arr);
   });
   it("пустой массив по убыванию", async () => {
     const arr: TColumn[] = [];
     expect(
       await getСhoiceSorting(setState, setLoader, arr, Direction.Descending),
     ).toEqual(arr);
-    // expect(
-    //   await getBubbleSorting(setState, setLoader, arr, Direction.Ascending),
-    // ).toEqual(arr);
   });
   it("массив из одного элемента по возрастанию", async () => {
     const arr: TColumn[] = [{ height: 10, state: ElementStates.Default }];
@@ -30,9 +24,6 @@ describe("Сортировка выбором корректно сортиру�
     expect(
       await getСhoiceSorting(setState, setLoader, arr, Direction.Ascending),
     ).toEqual(sortArr);
-    // expect(
-    //   await getBubbleSorting(setState, setLoader, arr, Direction.Ascending),
-    // ).toEqual(sortArr);
   });
   it("массив из одного элемента по убыванию", async () => {
     const arr: TColumn[] = [{ height: 10, state: ElementStates.Default }];
@@ -40,9 +31,6 @@ describe("Сортировка выбором корректно сортиру�
     expect(
       await getСhoiceSorting(setState, setLoader, arr, Direction.Descending),
     ).toEqual(sortArr);
-    // expect(
-    //   await getBubbleSorting(setState, setLoader, arr, Direction.Ascending),
-    // ).toEqual(sortArr);
   });
   it("массив из нескольких элементов по возрастанию", async () => {
     const arr: TColumn[] = [
@@ -58,9 +46,6 @@ describe("Сортировка выбором корректно сортиру�
     expect(
       await getСhoiceSorting(setState, setLoader, arr, Direction.Ascending),
     ).toEqual(sortArr);
-    // expect(
-    //   await getBubbleSorting(setState, setLoader, arr, Direction.Ascending),
-    // ).toEqual(sortArr);
   });
   it("массив из нескольких элементов по убыванию", async () => {
     const arr: TColumn[] = [
@@ -76,9 +61,6 @@ describe("Сортировка выбором корректно сортиру�
     expect(
       await getСhoiceSorting(setState, setLoader, arr, Direction.Descending),
     ).toEqual(sortArr);
-    // expect(
-    //   await getBubbleSorting(setState, setLoader, arr, Direction.Ascending),
-    // ).toEqual(sortArr);
   });
 });
 

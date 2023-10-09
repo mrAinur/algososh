@@ -1,7 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  projectId: 'uvdkrs',
+  projectId: "uvdkrs",
   component: {
     devServer: {
       framework: "create-react-app",

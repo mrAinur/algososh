@@ -38,7 +38,7 @@ export const FibonacciPage: React.FC = () => {
           />
           <Button
             type="button"
-            text="Развернуть"
+            text="Рассчитать"
             extraClass={style.button}
             onClick={() => {
               getCircleItems(Number(values.string));

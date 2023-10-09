@@ -1,9 +1,9 @@
 describe("Тестирование работы роутинга", () => {
-  const path = "http://localhost:3000";
+  const pathUrl = "http://localhost:3000";
   const checkUrl = endUrl => {
     cy.get(`#${endUrl}`).click();
     cy.url().then(url => {
-      if (url !== `${path}/${endUrl}`)
+      if (url !== `${pathUrl}/${endUrl}`)
         throw new Error(`Ошибка маршрутизации на страницу /${endUrl}`);
       return null;
     });
@@ -11,7 +11,7 @@ describe("Тестирование работы роутинга", () => {
 
   beforeEach(() => {
     cy.viewport(1480, 850);
-    cy.visit(path);
+    cy.visit(pathUrl);
   });
 
   it("на страницу разворота строки", () => {
