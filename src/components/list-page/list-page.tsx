@@ -19,9 +19,16 @@ type Cirlces = {
 };
 
 export const ListPage: React.FC = () => {
+  const startArr = [
+    { value: "0", state: ElementStates.Default },
+    { value: "34", state: ElementStates.Default },
+    { value: "8", state: ElementStates.Default },
+    { value: "1", state: ElementStates.Default },
+  ];
+
   const [arr, setArr] = useState<Cirlces[]>();
 
-  const [list, setList] = useState(new LinkedList<Cirlces>());
+  const [list, setList] = useState(new LinkedList<Cirlces>(startArr));
 
   const [loader, setLoader] = useState({
     addHeadLoader: false,
@@ -146,14 +153,6 @@ export const ListPage: React.FC = () => {
   };
 
   useEffect(() => {
-    const startArr = [
-      { value: "0", state: ElementStates.Default },
-      { value: "34", state: ElementStates.Default },
-      { value: "8", state: ElementStates.Default },
-      { value: "1", state: ElementStates.Default },
-    ];
-    startArr.forEach(item => list.append(item.value, item.state));
-    setList(list);
     const cirlcesArr = list.toArray();
     setArr([...cirlcesArr]);
   }, []);
