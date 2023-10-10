@@ -1,36 +1,58 @@
+const {
+  borderColorCheck,
+  urlPath,
+  screenViewport,
+  circleDefaultSize,
+} = require("./utils/constants");
+
 describe("Проверка", () => {
-  const pathUrl = "http://localhost:3000/queue";
   const testingText = ["A", "B", "C", "D"];
   const TAIL = "tail";
   const HEAD = "head";
   const checkAddCircleAnimation = i => {
     cy.get("li")
       .eq(i)
-      .find("[class^=circle_circle__]")
-      .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+      .find(circleDefaultSize)
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.pinkBorder,
+      );
     cy.get("li").eq(i).contains(TAIL);
     cy.get("li")
       .eq(i)
       .contains(testingText[i])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.blueBorder,
+      );
   };
   const checkRemoveCircleAnimation = i => {
     cy.get("li")
       .eq(i)
       .contains(testingText[i])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.pinkBorder,
+      );
     cy.get("li").eq(i).contains(HEAD);
     cy.get("li")
       .eq(i)
-      .find("[class^=circle_circle__]")
-      .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+      .find(circleDefaultSize)
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.blueBorder,
+      );
   };
 
   beforeEach(() => {
-    cy.viewport(1450, 860);
-    cy.visit(pathUrl);
+    cy.viewport(screenViewport.width, screenViewport.height);
+    cy.visit(urlPath.queue);
   });
 
   it("Недоступности кнопки добавления при пустом инпуте", () => {
@@ -78,10 +100,14 @@ describe("Проверка", () => {
     cy.get("ul>li").each(li => {
       cy.get(li).as("circle");
       cy.get("@circle")
-        .find("[class^=circle_circle__]")
-        .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+        .find(circleDefaultSize)
+        .should(
+          borderColorCheck.haveCss,
+          borderColorCheck.border,
+          borderColorCheck.blueBorder,
+        );
       cy.get("@circle")
-        .find("[class^=circle_circle__]")
+        .find(circleDefaultSize)
         .find(".text_type_circle")
         .should("be.empty");
     });

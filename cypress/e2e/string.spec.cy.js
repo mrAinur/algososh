@@ -1,24 +1,37 @@
+const {
+  borderColorCheck,
+  urlPath,
+  screenViewport,
+} = require("./utils/constants");
+
 describe("Проверка", () => {
   const testingText = ["c", "h", "e", "c", "k"];
-  const pathUrl = "http://localhost:3000/recursion";
   const checkCircleChanging = i => {
     cy.get("li")
       .eq(i)
       .contains(testingText[i])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.pinkBorder,
+      );
   };
   const checkCircleModified = (index, letter) => {
     cy.get("li")
       .eq(index)
       .contains(testingText[letter])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(127, 224, 81)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.greenBorder,
+      );
   };
 
   beforeEach(() => {
-    cy.viewport(1450, 860);
-    cy.visit(pathUrl);
+    cy.viewport(screenViewport.width, screenViewport.height);
+    cy.visit(urlPath.string);
   });
 
   it("недоступности кнопки обновления при пустом инпуте", () => {
@@ -45,7 +58,11 @@ describe("Проверка", () => {
           .eq(i)
           .contains(testingText[i])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
       }
     }
 

@@ -1,41 +1,42 @@
+const { urlPath, screenViewport } = require("./utils/constants");
+
 describe("Тестирование работы роутинга", () => {
-  const pathUrl = "http://localhost:3000";
   const checkUrl = endUrl => {
-    cy.get(`#${endUrl}`).click();
+    cy.get(`#${endUrl.replace("/", "")}`).click();
     cy.url().then(url => {
-      if (url !== `${pathUrl}/${endUrl}`)
-        throw new Error(`Ошибка маршрутизации на страницу /${endUrl}`);
+      if (url.replace("http://localhost:3000", "") !== endUrl)
+        throw new Error(`Ошибка маршрутизации на страницу ${endUrl}`);
       return null;
     });
   };
 
   beforeEach(() => {
-    cy.viewport(1480, 850);
-    cy.visit(pathUrl);
+    cy.viewport(screenViewport.width, screenViewport.height);
+    cy.visit(urlPath.main);
   });
 
   it("на страницу разворота строки", () => {
-    checkUrl("recursion");
+    checkUrl(urlPath.string);
     cy.contains("Строка");
   });
   it("на страницу последовательности фибоначчи", () => {
-    checkUrl("fibonacci");
+    checkUrl(urlPath.fibonacci);
     cy.contains("Последовательность Фибоначчи");
   });
   it("на страницу сортировки массива", () => {
-    checkUrl("sorting");
+    checkUrl(urlPath.sorting);
     cy.contains("Сортировка массива");
   });
   it("на страницу стека", () => {
-    checkUrl("stack");
+    checkUrl(urlPath.stack);
     cy.contains("Стек");
   });
   it("на страницу очереди", () => {
-    checkUrl("queue");
+    checkUrl(urlPath.queue);
     cy.contains("Очередь");
   });
   it("на страницу связного списка", () => {
-    checkUrl("list");
+    checkUrl(urlPath.list);
     cy.contains("Связный список");
   });
 });

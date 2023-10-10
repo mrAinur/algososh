@@ -1,23 +1,36 @@
+const {
+  borderColorCheck,
+  urlPath,
+  screenViewport,
+} = require("./utils/constants");
+
 describe("Проверка", () => {
   const testingText = ["A", "B", "C"];
-  const pathUrl = "http://localhost:3000/stack";
   const checkCircleAnimation = i => {
     cy.get("li")
       .eq(i)
       .contains(testingText[i])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.pinkBorder,
+      );
     cy.get("li").eq(i).contains("top");
     cy.get("li")
       .eq(i)
       .contains(testingText[i])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.blueBorder,
+      );
   };
 
   beforeEach(() => {
-    cy.viewport(1450, 860);
-    cy.visit(pathUrl);
+    cy.viewport(screenViewport.width, screenViewport.height);
+    cy.visit(urlPath.stack);
   });
 
   it("Недоступности кнопки добавления при пустом инпуте", () => {
@@ -46,7 +59,11 @@ describe("Проверка", () => {
         .eq(end)
         .contains(testingText[end])
         .parent("div")
-        .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+        .should(
+          borderColorCheck.haveCss,
+          borderColorCheck.border,
+          borderColorCheck.pinkBorder,
+        );
       if (end === 0) {
         cy.get("ul").should("be.empty");
         break;

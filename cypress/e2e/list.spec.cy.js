@@ -1,5 +1,10 @@
+const {
+  borderColorCheck,
+  urlPath,
+  screenViewport,
+} = require("./utils/constants");
+
 describe("Проверка", () => {
-  const pathUrl = "http://localhost:3000/list";
   const testingText = ["A", "B", "C", "D"];
   const defaultComponentListText = [0, 34, 8, 1];
   const TAIL = "tail";
@@ -18,12 +23,16 @@ describe("Проверка", () => {
     cy.get(li)
       .contains(defaultComponentListText[index])
       .parent("div")
-      .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+      .should(
+        borderColorCheck.haveCss,
+        borderColorCheck.border,
+        borderColorCheck.blueBorder,
+      );
   };
 
   beforeEach(() => {
-    cy.viewport(1450, 860);
-    cy.visit(pathUrl);
+    cy.viewport(screenViewport.width, screenViewport.height);
+    cy.visit(urlPath.list);
     cy.get("ul>li").as("circlesArr");
   });
 
@@ -71,7 +80,11 @@ describe("Проверка", () => {
       cy.get(li)
         .contains(defaultComponentListText[index])
         .parent("div")
-        .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+        .should(
+          borderColorCheck.haveCss,
+          borderColorCheck.border,
+          borderColorCheck.blueBorder,
+        );
     });
   });
 
@@ -83,7 +96,11 @@ describe("Проверка", () => {
         cy.get(li)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
         cy.get(li).should("not.contain", HEAD);
       }
       checkDefaultCircle(li, index);
@@ -94,7 +111,11 @@ describe("Проверка", () => {
         cy.get(li)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(127, 224, 81)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.greenBorder,
+          );
         cy.get(li).contains(HEAD);
       }
       if (index === arr.length) cy.get(li).contains(TAIL);
@@ -106,7 +127,11 @@ describe("Проверка", () => {
         cy.get(li)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
         cy.get(li).contains(HEAD);
       }
       if (index === arr.length - 1) cy.get(li).contains(TAIL);
@@ -122,7 +147,11 @@ describe("Проверка", () => {
         cy.get(li)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
       }
       checkDefaultCircle(li, index);
     });
@@ -134,13 +163,21 @@ describe("Проверка", () => {
           .eq(index)
           .contains(defaultComponentListText[index])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
       if (index === defaultComponentListText.length) {
         cy.get("li")
           .eq(index)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(127, 224, 81)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.greenBorder,
+          );
         cy.get("li").eq(index).contains(TAIL);
       }
     }
@@ -152,13 +189,21 @@ describe("Проверка", () => {
           .eq(index)
           .contains(defaultComponentListText[index])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
       if (index === defaultComponentListText.length) {
         cy.get("li")
           .eq(index)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
         cy.get("li").eq(index).contains(TAIL);
       }
     }
@@ -175,25 +220,41 @@ describe("Проверка", () => {
           .eq(i)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
         cy.get("li")
           .eq(i)
           .contains(defaultComponentListText[i])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
       }
       if (i === testNum)
         cy.get("li")
           .eq(i)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(127, 224, 81)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.greenBorder,
+          );
       if (i > testNum)
         cy.get("li")
           .eq(i)
           .contains(defaultComponentListText[i - 1])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
     }
 
     for (let i = 0; i <= defaultComponentListText.length; i++) {
@@ -202,20 +263,32 @@ describe("Проверка", () => {
           .eq(i)
           .contains(defaultComponentListText[i])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
 
       if (i === testNum)
         cy.get("li")
           .eq(i)
           .contains(testingText[0])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
       if (i > testNum)
         cy.get("li")
           .eq(i)
           .contains(defaultComponentListText[i - 1])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
     }
   });
 
@@ -227,7 +300,11 @@ describe("Проверка", () => {
           .find("[class*=circle_small__]")
           .contains(defaultComponentListText[index])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
         cy.get(li).contains(HEAD);
       }
       if (index !== 0) checkDefaultCircle(li, index);
@@ -246,7 +323,11 @@ describe("Проверка", () => {
         .eq(i)
         .contains(defaultComponentListText[i + 1])
         .parent("div")
-        .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+        .should(
+          borderColorCheck.haveCss,
+          borderColorCheck.border,
+          borderColorCheck.blueBorder,
+        );
     }
   });
 
@@ -258,11 +339,19 @@ describe("Проверка", () => {
           .find("[class*=circle_small__]")
           .contains(defaultComponentListText[index])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
         cy.get(li)
           .find(".text_type_circle")
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
         cy.get(li).should("not.contain", TAIL);
       }
       if (index !== arr.length - 1) checkDefaultCircle(li, index);
@@ -279,7 +368,11 @@ describe("Проверка", () => {
         .eq(i)
         .contains(defaultComponentListText[i])
         .parent("div")
-        .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+        .should(
+          borderColorCheck.haveCss,
+          borderColorCheck.border,
+          borderColorCheck.blueBorder,
+        );
     }
   });
 
@@ -294,21 +387,33 @@ describe("Проверка", () => {
           .eq(i)
           .contains(defaultComponentListText[i])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
       if (i === testNum) {
         cy.get("li")
           .eq(i)
           .find("[class*=circle_small__]")
           .contains(defaultComponentListText[i])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(210, 82, 225)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.pinkBorder,
+          );
         cy.get("li")
           .eq(i)
           .find("[class*=list-page_bigCircle__]")
           .find(".text_type_circle")
           .should("have.value", "")
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
         cy.get("ul>li").should("have.length", 3);
       }
       if (i >= testNum) {
@@ -316,7 +421,11 @@ describe("Проверка", () => {
           .eq(i)
           .contains(defaultComponentListText[i + 1])
           .parent("div")
-          .should("have.css", "border", "4px solid rgb(0, 50, 255)");
+          .should(
+            borderColorCheck.haveCss,
+            borderColorCheck.border,
+            borderColorCheck.blueBorder,
+          );
       }
       if (i === defaultComponentListText.length - 2)
         cy.get("li").eq(i).should("contain", TAIL);
